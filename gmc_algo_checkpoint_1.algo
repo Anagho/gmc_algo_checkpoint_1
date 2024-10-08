@@ -1,0 +1,44 @@
+// Algorithm to analyze a sentence
+FUNCTION analyze_sentence(sentence : STRING)
+
+VAR
+    char_count, word_count, vowel_count: INTEGER;
+    i: INTEGER;
+    vowels: STRING;
+
+BEGIN
+    // Initialize counters
+    char_count := 0;
+    word_count := 0;
+    vowel_count := 0;
+    vowels := "aeiouAEIOU"; // String of vowels for easy lookup
+
+    // Iterate through each character in the sentence
+    FOR i FROM 1 TO sentence.length STEP 1 DO
+        IF sentence[i] != '.' THEN
+            // count characters (excluding the dot(.))
+            char_count := char_count + 1; // updating the char_count
+        END_IF
+
+        // Count words (whenever we encounter a space followed by a letter)
+        IF i > 1 AND sentence[i-1] = ' ' AND sentence[i] != ' ' THEN
+            word_count := word_count + 1; // update the word count
+        END_IF
+
+        // Count vowels
+        IF sentence[i] IN vowels THEN
+            vowel_count := vowel_count + 1;
+        END_IF
+    END_FOR
+
+    // Since the last word won't have a space after it, increment the word count
+    IF sentence[1] != ' ' THEN
+        word_count := word_count + 1;
+    END_IF
+
+    // Display the result
+    PRINT "Number of characters: ", char_count;
+    PRINT "Number of words: ", word_count;
+    PRINT "Number of vowels: ", vowel_count;
+
+END
