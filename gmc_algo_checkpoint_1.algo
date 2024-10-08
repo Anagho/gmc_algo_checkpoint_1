@@ -1,5 +1,5 @@
 // Algorithm to analyze a sentence
-FUNCTION analyze_sentence(sentence : STRING)
+PROCEDURE analyze_sentence(sentence : STRING)
 
 VAR
     char_count, word_count, vowel_count: INTEGER;
